@@ -81,9 +81,47 @@ body{
   font-family: 'Inter', sans-serif;
 }
 
+/* navbar.jsx */
 li {
   margin-left: 1.5rem;
   cursor: pointer;
   opacity: 0.5;
   font-size: small;
 }
+
+/* footer.jsx */
+.footerDiv p {
+  font-size: x-small;
+  opacity: 0.5;
+  margin-bottom: 1rem;
+}
+
+.footerDiv h1 {
+  margin-bottom: 1rem;
+}
+
+.iconDiv i {
+  margin-right: 1rem;
+  margin-bottom : 2rem;
+  opacity: 0.6;
+}
+
+.iconDiv i:hover {
+  cursor: pointer;
+  color: rgb(49, 49, 237);
+}
+
+.iconDiv i.fa-instagram:hover , .iconDiv i.fa-youtube:hover {
+  color: rgb(239, 46, 46);
+}
+
+.iconDiv i.fa-x-twitter:hover{
+  color: black;
+  opacity: 1;
+}
+
+.iconDiv i.fa-whatsapp:hover{
+  opacity: 1;
+  color: rgb(11, 240, 11);
+}
+
