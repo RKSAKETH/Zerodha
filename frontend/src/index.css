@@ -80,3 +80,10 @@ body{
   min-height: 100vh;
   font-family: 'Inter', sans-serif;
 }
+
+li {
+  margin-left: 1.5rem;
+  cursor: pointer;
+  opacity: 0.5;
+  font-size: small;
+}
