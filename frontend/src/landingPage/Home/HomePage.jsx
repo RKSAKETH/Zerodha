@@ -9,13 +9,11 @@ import OpenAccount from '../OpenAccount'
 export default function HomePage() {
     return (
         <>
-            <Navbar/>
             <Hero/>
             <Stats/>
             <Pricing/>
             <Education/>
             <OpenAccount/>
-            <Footer/>
         </>
         
     )
