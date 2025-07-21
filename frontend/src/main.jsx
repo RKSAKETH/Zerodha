@@ -10,6 +10,7 @@ import Productpage from './landingPage/Products/Productpage'
 import Supportpage from './landingPage/Support/Supportpage';
 import Navbar from './landingPage/Navbar';
 import Footer from './landingPage/Footer';
+
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <Navbar/>
