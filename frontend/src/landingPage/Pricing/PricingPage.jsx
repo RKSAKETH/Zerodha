@@ -1,5 +1,10 @@
+import Hero from "./Hero"
+import Prices from "./Prices"
 export default function Pricingpage() {
     return (
-        <h1>This is a pricing page</h1>
+        <div>
+            <Hero/>
+            <Prices/>
+        </div>
     )
 }

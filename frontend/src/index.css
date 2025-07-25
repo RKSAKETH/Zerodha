@@ -72,8 +72,8 @@ button:focus-visible {
 
 
 body{
-  margin-left: 18rem;
-  margin-right: 15rem;
+  /* margin-left: 18rem;
+  margin-right: 15rem; */
   display: flex;
   place-items: center;
   min-width: 320px;

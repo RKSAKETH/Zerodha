@@ -28,7 +28,7 @@ export default function Navbar() {
         <ul className="flex space-x-6">
           <li><Link to="/signup">Signup</Link></li>
           <li><Link to="/about">About</Link></li>
-          <li><Link to="/products">Products</Link></li>
+          <li><Link to="/product">Products</Link></li>
           <li><Link to="/pricing">Pricing</Link></li>
           <li><Link to="/support">Support</Link></li>
         </ul>

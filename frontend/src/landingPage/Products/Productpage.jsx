@@ -1,5 +1,9 @@
+import Hero from "./Hero"
 export default function Productpage() {
     return (
-        <h1>This is a product page</h1>
+       <div>
+            <Hero/>
+            <LeftSection/>
+       </div>
     )
 }
