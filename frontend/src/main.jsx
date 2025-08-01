@@ -11,18 +11,19 @@ import Supportpage from './landingPage/Support/Supportpage';
 import Navbar from './landingPage/Navbar';
 import Footer from './landingPage/Footer';
 import MarginLayout from './layouts/MarginLayout';
+import ZeroMarginLayout from './layouts/ZeroMarginLayout';
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
-    <Navbar/>
+    <MarginLayout><Navbar/></MarginLayout>
     <Routes>
-      <Route path="/" element={<HomePage/>}/>
-      <Route path="/signup" element={<SignupPage/>}/>
-      <Route path="/pricing" element= {<MarginLayout>  <Pricingpage /> </MarginLayout>} />
-      <Route path="/about" element={<Aboutpage/>}/>
-      <Route path='/product' element={<Productpage/>} />
-      <Route path="/support" element={<Supportpage/>} />
+      <Route path="/" element={<MarginLayout><HomePage/> </MarginLayout> }/>
+      <Route path="/signup" element={<MarginLayout> <SignupPage/> </MarginLayout> }/>
+      <Route path="/pricing" element= {<ZeroMarginLayout>  <Pricingpage /> </ZeroMarginLayout>} />
+      <Route path="/about" element={<MarginLayout><Aboutpage/> </MarginLayout> }/>
+      <Route path='/product' element={<MarginLayout> <Productpage/> </MarginLayout> }/>
+      <Route path="/support"element={<MarginLayout> <Supportpage/> </MarginLayout> }/>
     </Routes>
-    <Footer/>
+    <MarginLayout><Footer/></MarginLayout>
   </BrowserRouter>
 )
