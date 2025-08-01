@@ -1,0 +1,20 @@
+Tailwind CSS :
+How to keep rgb value : className = "bg-[rgb(37,150,190)]" 
+When applied to a flex item, margin: auto has special and powerful behavior — it can be used to push the item to one side, center it, or even control spacing dynamically.
+
+In flex-direction: row (default), the main axis is horizontal → margin-left: auto or margin: auto affects horizontal alignment.
+margin-left: auto	This pushes the item to the right (because it takes all the space on the left)
+margin-right: auto	Pushes item to the left
+margin: auto	Centers item both vertically & horizontally (if space allows)
+
+In flex-direction: column, the main axis is vertical → margin-top: auto or margin: auto affects vertical alignment.
+margin-top: auto	Pushes item to bottom of container
+margin-bottom: auto	Pushes item to top of container
+
+---------------------------------------------------------------------------------------------------------
+React by itself doesn’t know how to handle URLs or page navigation. So, we use react-router-dom to:
+Navigate between pages
+Show or hide components based on the current URL
+Create single-page applications (SPAs) with multiple views
+
+

@@ -1,6 +1,6 @@
 export default function Founder(){
     return (
-        <div className="">
+        <div>
             <h1 className="text-2xl text-center text-gray-700 font-medium mb-20">People</h1>
         <div className="grid grid-cols-[1fr_2fr] gap-x-30">
             <div>

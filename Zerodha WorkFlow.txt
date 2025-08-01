@@ -1,0 +1,66 @@
+-------------------------------------------------------------------------------------------
+WorkFlow : 
+Created a remote repo in github (without the readme file in order to avoid error)
+Create folder(in VS code) , setup react . 
+git init
+git remote add origin <HTTPS link>
+git push origin main
+
+* You should push only the project folder that contains your source code and configuration files, not the root folder
+* You can't push empty folder into github (git push origin main will throw an error)
+* If you create some files after you write git init , don't forget to add and commmit changes before pushing 
+* When creating the GitHub repo, do not add a README, .gitignore, or license. This way, GitHub repo is completely empty, and your local push works fine.
+----------------------------------------------------------------------------------------------------
+Understanding the files and folders after initializing React :
+
+React - Setting Up local Environment 
+npm create vite@latest
+cd "to the folder u created"
+npm i 
+npm run dev
+
+node_modules/ can have thousands of files and take up hundreds of MBs. This bloats your GitHub repo and slows down cloning and pushing. This is why we don't push node_modules/ which is stated in .gitignore
+
+Package.json : We have all the dependencies and devDependencies in package.json
+Anyone can run :
+"npm i" (will check each dependency in package.json and install it)to recreate the exact same node_modules/
+-----------------------------------------------------------------------------------------------------
+For every page in the website , create an empty folder .
+Identify the components in every page 
+In that empty folder(which represents a page) create a .jsx file for every component in that page(folder) . After this , create another .jsx  file where we call every other component(.jsx file) that are in that folder . 
+
+Tailwind CSS - Go to the official website and follow the steps . By this time you must already started vite , you can start from step 2
+Go to index.css and paste 
+@import "tailwindcss";
+This one line is enough , you can apply styling from index.css or use tailwind classes in .jsx files directly 
+Since the navbar and footer are common for every page , we keep them outside of landingPage so that they can be accessed by every folder(every page)
+
+Put index.css in src/ so it's easy to:
+Import in main.jsx 
+Apply styles globally
+Keep code organized and React-compatible (As the main.jsx and index.css are in the same folder it will easy to import index.css in main.jsx without writing long and messy code like 
+'../styles/index.css')
+
+Font Awesone : Click "Font Awesome cdn" and copy the tag for the latest version and add that to the <head> in index.html
+Google Fonts : <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+
+------------------------------------------------------------------------------------------------------
+npm i react-router-dom : react-router-dom is a library used in React applications to handle routing, i.e., navigating between different pages or views without refreshing the page.
+Go to main.jsx : 
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+<BrowserRouter>
+ <Navbar/>
+ <Routes>
+   <Route path="" element={<nameofReactComponent/>}/>
+ <Routes/>
+ <Footer/>
+<BrowserRouter/>
+
+The navbar and the footer are common for every page , so we keep them outside of <Routes> (we want them no matter what the path is(for every path))
+
+** If you have used export default a function then you can name the import anything you want (i.e no need of strictly following function name in export file) : import AnythingYouWant from './landingPage/Pricing/PricingPage';
+
+It is better to use Link instead of anchor tags because Link uses React Router to change the URL without refreshing the page . 
+import { Link } from 'react-router-dom';
+<Link to="URL"></Link>
+----------------------------------------------------------------------------------------------------------
