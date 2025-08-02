@@ -12,6 +12,7 @@ import Navbar from './landingPage/Navbar';
 import Footer from './landingPage/Footer';
 import MarginLayout from './layouts/MarginLayout';
 import ZeroMarginLayout from './layouts/ZeroMarginLayout';
+import SupportPageLayout from './layouts/SupportPageLayout';
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
@@ -22,7 +23,7 @@ createRoot(document.getElementById('root')).render(
       <Route path="/pricing" element= {<ZeroMarginLayout>  <Pricingpage /> </ZeroMarginLayout>} />
       <Route path="/about" element={<MarginLayout><Aboutpage/> </MarginLayout> }/>
       <Route path='/product' element={<MarginLayout> <Productpage/> </MarginLayout> }/>
-      <Route path="/support"element={<MarginLayout> <Supportpage/> </MarginLayout> }/>
+      <Route path="/support"element={<SupportPageLayout> <Supportpage/> </SupportPageLayout> }/>
     </Routes>
     <MarginLayout><Footer/></MarginLayout>
   </BrowserRouter>
