@@ -17,4 +17,18 @@ Navigate between pages
 Show or hide components based on the current URL
 Create single-page applications (SPAs) with multiple views
 
+----------------------------------------------------------------------------------------------------------
+mx-auto : Used to center elements horizontally (like block elements).
+my-auto : Used to center elements vertically within a flex container.
+----------------------------------------------------------------------------------------------------------
+MongoDB(Database Server) : The actual database software that stores your data in collections and documents (like folders and JSON files).Can run on your computer or on a server.
+MongoDB Atlas(Cloud Database Server) : Instead of installing and running MongoDB yourself on your local device, you let Atlas run it on MongoDB's cloud infrastructure.You get a MongoDB database that’s accessible via the internet.Think of Atlas as a ready-to-use online version of MongoDB.
+Mongo URL : The address used to connect to a MongoDB database (local or cloud).
+If mongoDB database is local (in our own device) : mongodb://localhost:27017/myDatabase
+If mongoDB database is in the cloud : mongodb+srv://user:pass@cluster0.mongodb.net/myDatabase
+Mongoose : A Node.js library that makes working with MongoDB easier.Without this you would have to write raw MongoDB commands
+Define schemas (rules for data shape)
+Use models (JavaScript objects that represent collections)
+Validate data automatically
+MongoDB Compass : A visual tool for MongoDB(visual browser for your database). Lets you see your data in a nice interface. Works with both local MongoDB and Atlas. Lets you view and edit your data without writing code.Run queries visually.Analyze schema structure.
 
