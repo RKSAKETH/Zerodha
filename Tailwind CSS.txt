@@ -31,4 +31,4 @@ Define schemas (rules for data shape)
 Use models (JavaScript objects that represent collections)
 Validate data automatically
 MongoDB Compass : A visual tool for MongoDB(visual browser for your database). Lets you see your data in a nice interface. Works with both local MongoDB and Atlas. Lets you view and edit your data without writing code.Run queries visually.Analyze schema structure.
-
+----------------------------------------------------------------------------------------------------------

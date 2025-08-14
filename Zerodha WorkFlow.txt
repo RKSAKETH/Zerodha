@@ -64,3 +64,78 @@ It is better to use Link instead of anchor tags because Link uses React Router t
 import { Link } from 'react-router-dom';
 <Link to="URL"></Link>
 ----------------------------------------------------------------------------------------------------------
+MongoDB Atlas :
+1)Go to MongoDB website 
+2)Create a new project , give a name to your project and click next.
+3)Create a cluster (free , mumbai , name of the cluster).
+4)After creating the cluster you would be redirected to security quickstart 
+5)Authenticate your connection by creating username and password (remember the cridentials) , in the IP Addresses list : use 0.0.0.0/0 (global address - This could be accessed from any region of the world)
+
+6)When you click on overview : you get the cluster you created 
+7)Click on connect or connection string
+  7.1) If u click "Connect" then click "Drivers". you will then be directed to 7.2
+  7.2) If u click "Get connection string" copy the connection string and add it to your .env file as MONGO_URL.
+  7.3) mongodb+srv://RKSaketh:<db_password>@zerodhaclusterclone.rtcmolb.mongodb.net/?retryWrites=true&w=majority&appName=ZerodhaClusterClone
+       Replace <db_password> with the password that you have setup . and also you can write the name of your database after the slash (mongodb.net/) . If you skip /<dbname>, MongoDB 	        defaults to a database called test.
+----------------------------------------------------------------------------------------------------------
+Ok so I had to sit through lot of hours trying to figure out this bug !!
+Initially : 
+local Repo (VS Code) -> Zerodha Clone-> dashboard + frontend
+remote Repo (github Repo) -> Zerodha -> dasboard + frontend
+
+Now when I create a new folder "backend" , I tried to intialized it as a git repo and then I tried to push only the backend folder into github. This resulted in an error . Why ?
+It is because when I try to insert backend folder into github , git expects that all the files and folders present in the github to be present and in sync inside the folder where you are running the command .
+For example , when I try to create a new folder "backend" in Zerodha -> backend + dashboard + frontend and if I run the command inside the backend folder , git would expect the "frontend" and "dashboard" folders(and all the contents inside them) to be present in "backend" folder.
+We won't obviously have them inside the backend folder .
+
+So the solution for this would be make the root folder a local repo . This way whenever you add a new repo(folder) , the folders in the github are already present and in sync with the local folders , only the new folder would be added into github .
+
+A more refined version :
+Initial setup:
+Local Repo (VS Code): Zerodha Clone → contains dashboard + frontend
+Remote Repo (GitHub): Zerodha → contains dashboard + frontend
+
+Issue
+When you try to initialize the backend folder as a separate Git repository and push it:
+Git expects the entire repository structure from GitHub to exist inside the folder you are pushing.
+In your case, backend does not contain the existing dashboard and frontend folders.
+This mismatch causes errors when pushing because Git tries to sync the current folder as the root of the remote repository.
+
+Goal: Add a new folder backend and push it to the existing GitHub repository. 
+Example :
+GitHub Repo: Zerodha
+├── dashboard
+├── frontend
+Local folder: backend
+If you run git push inside backend, Git expects dashboard and frontend to also be in backend.
+Obviously, they are not, so the push fails.
+
+Solution:
+1)Make the root folder (Zerodha Clone) a Git repository (if not already).
+2)Keep your local folder structure in sync with GitHub:
+Zerodha Clone
+├── dashboard
+├── frontend
+└── backend
+
+3)Add the new backend folder to the existing repository:
+cd Zerodha Clone
+git add backend
+git commit -m "Add backend folder"
+git push origin main
+Since the root folder is already a Git repo and in sync with GitHub, Git only tracks new changes (in this case, backend) and pushes them successfully.
+
+✅ Key takeaway:
+Always initialize Git at the root of the project, not inside a subfolder, if you want to push changes to an existing repository. This ensures Git tracks all existing files and only adds the new ones.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+Backend :
+Initial Setup
+1)npm init -y (To initialize package.json file)
+   In the package.json file , for the value of "start" , remove the value of start and add a new 
+2)npm i -D nodemon (To install nodemon)
+3)npm i express body-parser cors dotenv mongoose passport passport-local passport-local-mongoose 
+4)create a file .gitignore include node_modules/ and .env (environmental variables)
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
