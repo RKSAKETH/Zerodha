@@ -22,13 +22,176 @@ mx-auto : Used to center elements horizontally (like block elements).
 my-auto : Used to center elements vertically within a flex container.
 ----------------------------------------------------------------------------------------------------------
 MongoDB(Database Server) : The actual database software that stores your data in collections and documents (like folders and JSON files).Can run on your computer or on a server.
+
 MongoDB Atlas(Cloud Database Server) : Instead of installing and running MongoDB yourself on your local device, you let Atlas run it on MongoDB's cloud infrastructure.You get a MongoDB database that’s accessible via the internet.Think of Atlas as a ready-to-use online version of MongoDB.
+
 Mongo URL : The address used to connect to a MongoDB database (local or cloud).
 If mongoDB database is local (in our own device) : mongodb://localhost:27017/myDatabase
 If mongoDB database is in the cloud : mongodb+srv://user:pass@cluster0.mongodb.net/myDatabase
+
 Mongoose : A Node.js library that makes working with MongoDB easier.Without this you would have to write raw MongoDB commands
 Define schemas (rules for data shape)
 Use models (JavaScript objects that represent collections)
 Validate data automatically
+
 MongoDB Compass : A visual tool for MongoDB(visual browser for your database). Lets you see your data in a nice interface. Works with both local MongoDB and Atlas. Lets you view and edit your data without writing code.Run queries visually.Analyze schema structure.
 ----------------------------------------------------------------------------------------------------------
+Environmental Variables :
+Environment variables (often abbreviated as env variables) are key–value pairs maintained by the operating system or shell that can influence the way running processes behave.
+Security → Sensitive information (like API keys, passwords) can be stored without hardcoding them in code. If our main code contains hardcoded api keys and if our code is uploaded to github or shared with anyone, the API keys are exposed. 
+
+Attackers can steal your keys and:
+Access your services (like databases, cloud storage, payment gateways).
+Generate unexpected costs (for example, on AWS, GCP, Azure).
+Steal sensitive user data.
+Even if you delete the code, Git history may still contain the leaked key.
+
+require('dotenv').config() :
+
+What is dotenv?
+dotenv is a popular Node.js package.
+Its job is to load environment variables from a .env file into process.env.
+
+What does .config() do?
+When you call .config(), the package:
+Reads your .env file (from your project root).
+Parses the key–value pairs.
+Adds them to process.env.
+
+process.env.port
+process → is a global object in Node.js that provides information about the running process.
+process.env → is an object containing all environment variables available to the process.
+process.env.port → looks for a variable named port in your environment (usually stored in .env or system env).
+
+The || 8080 part means:
+If process.env.port exists, use that value.
+Otherwise, fall back to 8080 (default).
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+const PositionsModel = new model ('postion',PositionsSchema)
+'position' : The mongoose would add an 's' and make the name of collection as positions.
+
+CommonJS System :
+Uses require() to import and module.exports to export.
+
+ESM (ES Modules) System :
+Uses import to import and export to export
+Uses (import .. from ..) to import and (export .. , export default ..) to export 
+
+Pick one system throughout the project to avoid any errors. In the folder in which you are writing the code , in the package.json file write (or) change the type to 'module' so all .js files inside it (like data.js) are treated as ESM.
+
+ESM :
+In the export file :
+Default export vs Named export :
+
+export default .. => Every file can have only one default export. This is like saying: “This file’s main thing is THIS.”This is typically used when you want to export only one utility from a file
+export {.. , .. , ..} => This is used when you want to export multiple utilities from a single file
+
+In the import file :
+import {.. , .. , ..} => This is used when you have used named exports . The names that you write in 'here' must match with the names that you write in named exports.
+import .. => This is used when you used a default export. The name that you write in 'here' does not necessarilly have to match with the name that you write in the default export.
+
+For named export :
+If you want to use different names in the import file :
+import {oldName as newName , .. , ..}
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Axios :
+Axios is like a bridge between frontend and backend.Your React app doesn’t directly talk to the database.
+
+Example : axios.get("http://localhost:3000/allHoldings")
+
+Your backend (index.js) runs an Express server, usually on port 3000 (or whichever you set with app.listen(3000)).
+That makes your API endpoint available at http://localhost:3000/allHoldings.
+
+On the frontend, when you write:
+axios.get("http://localhost:3000/allHoldings")
+Axios simply makes an HTTP GET request to that URL, the same way your browser would if you typed it in the address bar.
+
+Express → responds with JSON
+axios receives the response and updates React state
+
+useEffect(,[]) => Only runs once
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+cors :
+Enable Cross-Origin Resource Sharing (CORS)
+By default, browsers block requests made from a different origin (different domain/port).
+
+Example:
+
+Frontend React app runs at http://localhost:5173 (Vite).
+Backend Express API runs at http://localhost:3000.
+If frontend tries axios.get("http://localhost:5000/data"), browser blocks it (CORS error).
+✅ Solution: Use cors middleware.
+
+app.use(cors()); // allow all origins
+
+// You can restrict it for security
+app.use(cors({
+  origin: "http://localhost:5173", // only allow React frontend
+  methods: ["GET", "POST"],        // only allow these methods
+  credentials: true                // allow cookies/headers
+}));
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+User Authentication :
+Some key terms : 
+Salting : A salt is a random value(random characters) added to the password before hashing.Makes each hash unique, even if two users have the same password because each salt would be different. 
+User A: salt = "X7$k9@"
+User B: salt = "L3!pQ1"
+Password : 123456
+
+Hashing : Hashing is a one-way transformation of data (like a password) into a fixed-length string using a hash function.
+Salt Rounds : This number controls how many times bcrypt internally processes the password + salt.
+Properties:
+Deterministic: Same input → same output.
+Irreversible: Cannot (feasibly) get the original input back from the hash.
+Fixed output size: No matter the input length.
+
+bcrypt : bcrypt is a password-hashing library used to securely store user passwords in databases.
+You should never store plain-text passwords in your database (if your DB leaks, attackers get everything).
+Instead, we hash passwords before saving them. Hashing = one-way encryption → you can’t reverse it back to the original password.
+hash(password, saltRounds) takes in a plain text password and a number of salt rounds, then returns a hashed string.
+
+bcrypt.compare : Compares if the password that we entered matches the password of the user.
+
+jsonwebtoken :
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Chartjs :
+// Labels: these will appear on the X-axis of the chart.
+// Here we are taking the "name" property of each stock from allHoldings
+// so that every bar will be labeled with the stock name.
+const labels = allHoldings.map((stock) => stock.name);  
+
+// Chart.js data object: contains everything the chart needs to plot values.
+const data = {
+  // X-axis labels (taken from the stock names above)
+  labels, 
+
+  // datasets: an array of objects where each object represents
+  // one "series" of data you want to plot (you can have multiple datasets)
+  datasets: [ 
+    {
+      // This label will appear in the chart legend
+      // and also show up inside the tooltip when you hover over a bar.
+      label: "Stock Price", 
+
+      // Y-axis values: the numbers to plot against the labels.
+      // The length of this array MUST be the same as the length of `labels`.
+      data: allHoldings.map((stock) => stock.price), 
+
+      // Background color of each bar.
+      // If you pass just one color, all bars will have the same color.
+      // If you pass an array of colors, each bar will take the corresponding color.
+      // If the array is shorter than the number of bars, colors will cycle.
+      backgroundColor: "rgba(255, 99, 132, 0.5)", 
+    },
+  ],
+};
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Testing - Unit Testing = Testing individual components or functions in isolation to make sure it works as expected.
+JEST (Javascript Testing Framework):
+1) In the frontend/dashboard where ever you want to test the react component : npm install --save-dev jest @testing-library/react @testing-library/jest-dom
+2)
+
